@@ -5,6 +5,7 @@
     "now-build": "next build"
   },
   "dependencies": {
+    "mapbox-gl": "0.53.1",
     "next": "^8.0.0",
     "react": "^16.7.0",
     "react-dom": "^16.7.0"

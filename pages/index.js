@@ -1,16 +1,21 @@
 import Link from "next/link";
 import Header from "../components/header";
 import Map from "../components/Map";
+import Head from "next/head";
 
 function Index() {
   return (
     <main>
+      <Head>
+        <link
+          href="https://api.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.css"
+          rel="stylesheet"
+        />
+      </Head>
       <Header />
       <section>
         <Map />
-        <Link href="/about">
-          <a>Go to About Me</a>
-        </Link>
+        <h2>Garage Sales Near Me</h2>
       </section>
     </main>
   );
