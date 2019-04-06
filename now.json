@@ -1,1 +1,6 @@
-{"version":2,"name":"garage-sales","builds":[{"src":"package.json","use":"@now/next"}]}
+{
+  "version": 2,
+  "name": "garage-sales",
+  "alias": "waukeegaragesales",
+  "builds": [{ "src": "package.json", "use": "@now/next" }]
+}
