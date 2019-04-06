@@ -23,10 +23,17 @@ export default function Map({ sales }) {
       zoom: 12
     });
 
+    map.on("load", () => {
+      map.addLayer(generateSalePoints(sales));
+      map.on("click", "sales", e =>
+        console.log(`Clicked on a sale`, e.features)
+      );
+    });
+
     return () => {
       map.remove();
     };
-  });
+  }, [sales]);
 
   return (
     <>
@@ -39,4 +46,36 @@ export default function Map({ sales }) {
       `}</style>
     </>
   );
+}
+
+function generateSalePoints(sales) {
+  return {
+    id: "sales",
+    type: "symbol",
+    source: {
+      type: "geojson",
+      data: {
+        type: "FeatureCollection",
+        features: sales.map(sale => {
+          return {
+            type: "Feature",
+            geometry: {
+              type: "Point",
+              coordinates: [sale.longitude, sale.latitude]
+            },
+            properties: {
+              icon: "circle"
+            }
+          };
+        })
+      }
+    },
+    layout: {
+      "icon-image": "{icon}-15",
+      "text-field": "{title}",
+      "text-font": ["Open Sans Semibold", "Arial Unicode MS Bold"],
+      "text-offset": [0, 0.6],
+      "text-anchor": "top"
+    }
+  };
 }
