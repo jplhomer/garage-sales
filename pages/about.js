@@ -1,6 +1,6 @@
 import { Component } from "react";
 import Link from "next/link";
-import Header from "../components/header";
+import Header from "../components/Header";
 
 class AboutPage extends Component {
   static getInitialProps() {

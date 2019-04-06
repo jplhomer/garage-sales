@@ -1,5 +1,5 @@
 import Link from "next/link";
-import Header from "../components/header";
+import Header from "../components/Header";
 import Map from "../components/Map";
 import Head from "next/head";
 
