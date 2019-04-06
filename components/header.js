@@ -1,7 +1,7 @@
 function Header() {
   return (
     <header>
-      <h1>Next.js Example on Now 2.0</h1>
+      <h1>Waukee Garage Sale Day - Saturday, April 27, 2019</h1>
     </header>
   );
 }
