@@ -7,7 +7,7 @@ export default function GarageSale({ sale }) {
       </div>
       <style jsx>{`
         .sale {
-          margin-bottom: 0.5rem;
+          padding: 0.5rem 0;
         }
         .hours {
           color: var(--color-gray);

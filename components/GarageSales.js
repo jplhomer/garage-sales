@@ -16,6 +16,7 @@ export default function GarageSales({ sales }) {
           display: flex;
           justify-content: space-between;
           align-items: center;
+          margin-bottom: 1rem;
         }
 
         h2 {
