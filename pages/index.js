@@ -1,8 +1,13 @@
 import { Component } from "react";
-import Map from "../components/Map";
 import GarageSales from "../components/GarageSales";
 import { getGarageSales } from "../api/sales";
 import Layout from "../components/Layout";
+import dynamic from "next/dynamic";
+
+const DynamicMap = dynamic(() => import("../components/Map"), {
+  loading: () => <p>Loading...</p>,
+  ssr: false
+});
 
 export default class Index extends Component {
   static async getInitialProps() {
@@ -14,7 +19,7 @@ export default class Index extends Component {
   render() {
     return (
       <Layout>
-        <Map sales={this.props.sales} />
+        <DynamicMap sales={this.props.sales} />
         <div className="wrapper">
           <GarageSales sales={this.props.sales} />
         </div>

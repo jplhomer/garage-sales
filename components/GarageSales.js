@@ -3,7 +3,7 @@ import Button from "./Button";
 
 export default function GarageSales({ sales }) {
   return (
-    <div>
+    <section>
       <header>
         <h2>Garage Sales</h2>
         <Button href="/add">Add Your Sale</Button>
@@ -15,12 +15,13 @@ export default function GarageSales({ sales }) {
         header {
           display: flex;
           justify-content: space-between;
+          align-items: center;
         }
 
         h2 {
           margin-bottom: 0;
         }
       `}</style>
-    </div>
+    </section>
   );
 }

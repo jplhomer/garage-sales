@@ -1,8 +1,7 @@
 import { useEffect, useRef } from "react";
+import mapboxgl from "mapbox-gl";
 
 export default function Map({ sales }) {
-  if (!process.browser) return "";
-  const mapboxgl = require("mapbox-gl");
   mapboxgl.accessToken = process.env.MAPBOX_KEY;
 
   let mapContainer = useRef(null);
@@ -34,7 +33,7 @@ export default function Map({ sales }) {
   }, [sales]);
 
   return (
-    <>
+    <div className="mapContainer">
       <div className="map" ref={mapContainer} />
       <style jsx>{`
         .map {
@@ -48,7 +47,7 @@ export default function Map({ sales }) {
           }
         }
       `}</style>
-    </>
+    </div>
   );
 }
 
