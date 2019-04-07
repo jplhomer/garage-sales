@@ -1,9 +1,8 @@
 import { Component } from "react";
-import Header from "../components/Header";
 import Map from "../components/Map";
 import GarageSales from "../components/GarageSales";
-import Head from "next/head";
 import { getGarageSales } from "../api/sales";
+import Layout from "../components/Layout";
 
 export default class Index extends Component {
   static async getInitialProps() {
@@ -14,19 +13,10 @@ export default class Index extends Component {
 
   render() {
     return (
-      <main>
-        <Head>
-          <link
-            href="https://api.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.css"
-            rel="stylesheet"
-          />
-        </Head>
-        <Header />
-        <section>
-          <Map sales={this.props.sales} />
-          <GarageSales sales={this.props.sales} />
-        </section>
-      </main>
+      <Layout>
+        <Map sales={this.props.sales} />
+        <GarageSales sales={this.props.sales} />
+      </Layout>
     );
   }
 }

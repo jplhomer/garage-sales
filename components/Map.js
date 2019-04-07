@@ -25,9 +25,7 @@ export default function Map({ sales }) {
 
     map.on("load", () => {
       map.addLayer(generateSalePoints(sales));
-      map.on("click", "sales", e =>
-        console.log(`Clicked on a sale`, e.features)
-      );
+      map.on("click", "sales", e => console.log(`Clicked on a sale`, e.features));
     });
 
     return () => {
@@ -40,8 +38,14 @@ export default function Map({ sales }) {
       <div className="map" ref={mapContainer} />
       <style jsx>{`
         .map {
-          height: 300px;
+          height: 200px;
           width: 100%;
+        }
+
+        @media (min-width: 500px) {
+          .map {
+            height: 400px;
+          }
         }
       `}</style>
     </>
