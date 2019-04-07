@@ -1,5 +1,12 @@
+import GarageSale from "./GarageSale";
+
 export default function GarageSales({ sales }) {
-  return sales.map(sale => {
-    return <p key={sale.id}>{sale.address}</p>;
-  });
+  return (
+    <div>
+      <h2>Garage Sales</h2>
+      {sales.map(sale => {
+        return <GarageSale key={sale.id} sale={sale} />;
+      })}
+    </div>
+  );
 }

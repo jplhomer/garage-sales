@@ -15,7 +15,9 @@ export default class Index extends Component {
     return (
       <Layout>
         <Map sales={this.props.sales} />
-        <GarageSales sales={this.props.sales} />
+        <div className="wrapper">
+          <GarageSales sales={this.props.sales} />
+        </div>
       </Layout>
     );
   }

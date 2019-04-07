@@ -11,6 +11,10 @@ export default function Layout({ children }) {
       <Header />
       <section>{children}</section>
       <style jsx global>{`
+        :root {
+          --color-gray: #555;
+        }
+
         body {
           margin: 0;
           padding: 0;
@@ -22,6 +26,18 @@ export default function Layout({ children }) {
         html *::before,
         html *::after {
           box-sizing: inherit;
+        }
+
+        .wrapper {
+          padding: 1rem;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5 {
+          margin-top: 0;
         }
       `}</style>
     </main>
