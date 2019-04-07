@@ -8,8 +8,8 @@ export default function Map({ sales }) {
   let mapContainer = useRef(null);
 
   const DEFAULT_CENTER = {
-    latitude: 41.5986522,
-    longitude: -93.9351638
+    latitude: 41.600446,
+    longitude: -93.853402
   };
 
   useEffect(() => {
