@@ -13,6 +13,7 @@ export default function Layout({ children }) {
       <style jsx global>{`
         :root {
           --color-gray: #555;
+          --color-orange: orange;
         }
 
         body {
