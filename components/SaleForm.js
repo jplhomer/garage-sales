@@ -53,19 +53,19 @@ export default function SaleForm() {
         <div className="main">
           <div className="field">
             <label htmlFor="address">Street Address</label>
-            <input type="text" id="address" value={address} onChange={e => setAddress(e.target.value)} />
+            <input type="text" id="address" value={address} onChange={e => setAddress(e.target.value)} required />
           </div>
           <div className="field">
             <label htmlFor="city">City</label>
-            <input type="text" id="city" value={city} onChange={e => setCity(e.target.value)} />
+            <input type="text" id="city" value={city} onChange={e => setCity(e.target.value)} required />
           </div>
           <div className="field">
             <label htmlFor="startTime">Start Time</label>
-            <input type="time" id="startTime" value={startTime} onChange={e => setStartTime(e.target.value)} />
+            <input type="time" id="startTime" value={startTime} onChange={e => setStartTime(e.target.value)} required />
           </div>
           <div className="field">
             <label htmlFor="endTime">End Time</label>
-            <input type="time" id="endTime" value={endTime} onChange={e => setEndTime(e.target.value)} />
+            <input type="time" id="endTime" value={endTime} onChange={e => setEndTime(e.target.value)} required />
           </div>
           <div className="field">
             <label htmlFor="description">Description</label>
