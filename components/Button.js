@@ -1,18 +1,16 @@
 import css from "styled-jsx/css";
 import Link from "next/link";
 
-export default function Button(props) {
-  const { href, children } = props;
-
+export default function Button({ href, children, ...props }) {
   const a = (
-    <a className="button">
+    <a className="button" {...props}>
       {children}
       <style jsx>{styles}</style>
     </a>
   );
 
   const btn = (
-    <button className="button">
+    <button className="button" {...props}>
       {children}
       <style jsx>{styles}</style>
     </button>

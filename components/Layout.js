@@ -16,10 +16,13 @@ export default function Layout({ children }) {
           --color-orange: orange;
         }
 
+        html {
+          box-sizing: border-box;
+        }
+
         body {
           margin: 0;
           padding: 0;
-          box-sizing: border-box;
           font-family: "Rubik", sans-serif;
         }
 
@@ -39,6 +42,29 @@ export default function Layout({ children }) {
         h4,
         h5 {
           margin-top: 0;
+        }
+
+        label {
+          display: block;
+          font-size: 0.8em;
+          text-transform: uppercase;
+          margin-bottom: 0.5em;
+        }
+
+        .field {
+          display: block;
+          padding: 0.5em 0;
+        }
+
+        input,
+        textarea {
+          appearance: none;
+          border: 1px solid #ccc;
+          background: #fff;
+          font-family: inherit;
+          padding: 0.5em;
+          width: 100%;
+          font-size: 1em;
         }
       `}</style>
     </main>
