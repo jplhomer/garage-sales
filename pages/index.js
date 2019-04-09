@@ -19,10 +19,40 @@ export default class Index extends Component {
   render() {
     return (
       <Layout>
-        <DynamicMap sales={this.props.sales} />
-        <div className="wrapper">
-          <GarageSales sales={this.props.sales} />
+        <div className="grid">
+          <div className="map">
+            <DynamicMap sales={this.props.sales} />
+          </div>
+          <div className="wrapper">
+            <GarageSales sales={this.props.sales} />
+          </div>
         </div>
+        <style jsx>{`
+          @media (min-width: 500px) {
+            .grid {
+              display: flex;
+              height: 100%;
+            }
+
+            .grid .map {
+              width: 50%;
+            }
+
+            .grid .wrapper {
+              width: 50%;
+            }
+          }
+
+          @media (min-width: 900px) {
+            .grid .map {
+              width: 60%;
+            }
+
+            .grid .wrapper {
+              width: 40%;
+            }
+          }
+        `}</style>
       </Layout>
     );
   }

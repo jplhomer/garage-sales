@@ -28,7 +28,7 @@ export default function Map({ sales }) {
   }, [sales]);
 
   return (
-    <div className="mapContainer">
+    <div className="map-container">
       <div className="map" ref={mapContainer} />
       <style jsx>{`
         .map {
@@ -37,8 +37,10 @@ export default function Map({ sales }) {
         }
 
         @media (min-width: 500px) {
-          .map {
-            height: 400px;
+          .map,
+          .map-container {
+            height: calc(100vh - 77px);
+            width: 100%;
           }
         }
       `}</style>
