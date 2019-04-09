@@ -4,6 +4,8 @@ import Button from "./Button";
 import { addGarageSale } from "../api/sales";
 import router from "next/router";
 import { getLatLngForAddress } from "../api/geocoder";
+import dynamic from "next/dynamic";
+const DynamicEditableLocationMap = dynamic(import("./EditableLocationMap"), { ssr: false });
 
 export default function SaleForm() {
   const [address, setAddress] = useState("");
@@ -71,6 +73,10 @@ export default function SaleForm() {
           value={description}
           onChange={e => setDescription(e.target.value)}
         />
+      </div>
+      <div className="field">
+        <label>Drag the pin to match your location</label>
+        <DynamicEditableLocationMap latLng={latLng} onChangeLocation={setLatLng} />
       </div>
       <Button type="submit">Add Garage Sale</Button>
     </form>

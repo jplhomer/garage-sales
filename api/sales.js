@@ -4,20 +4,15 @@ export async function getGarageSales() {
   const snapshot = await db.collection("sales").get();
   return snapshot.docs.map(doc => ({
     id: doc.id,
+    htmlDescription: getHtmlDescription(doc.data()),
     ...doc.data()
   }));
+}
 
-  return [
-    {
-      id: 1,
-      address: "2145 SE Parkview Crossing Dr",
-      description: "A fundraiser for the Waukee Lions Club. Baked goods available!",
-      start: "07:00",
-      end: "15:00",
-      lat: 41.593319,
-      lng: -93.857797
-    }
-  ];
+function getHtmlDescription(data) {
+  return `<b>${data.address}</b><br>
+      Hours: ${data.startTime} - ${data.endTime}<br>
+      <p>${data.description}</p>`;
 }
 
 export async function addGarageSale(sale) {
