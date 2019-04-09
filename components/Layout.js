@@ -7,6 +7,7 @@ export default function Layout({ children }) {
       <Head>
         <link href="https://api.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.css" rel="stylesheet" />
         <link href="https://fonts.googleapis.com/css?family=Bungee+Inline|Rubik:400,400i,700" rel="stylesheet" />
+        <title>Waukee Garage Sale Day - April 27, 2019</title>
       </Head>
       <Header />
       <section>{children}</section>
