@@ -2,5 +2,9 @@
   "version": 2,
   "name": "garage-sales",
   "alias": "waukeegaragesales",
-  "builds": [{ "src": "package.json", "use": "@now/next" }]
+  "builds": [{ "src": "package.json", "use": "@now/next" }],
+  "env": {
+    "GOOGLE_MAPS_API_KEY": "@google_map_api_key",
+    "MAPBOX_KEY": "@mapbox_key"
+  }
 }

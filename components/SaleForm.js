@@ -1,5 +1,9 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useDebounce } from "../src/hooks";
 import Button from "./Button";
+import { addGarageSale } from "../api/sales";
+import router from "next/router";
+import { getLatLngForAddress } from "../api/geocoder";
 
 export default function SaleForm() {
   const [address, setAddress] = useState("");
@@ -7,10 +11,38 @@ export default function SaleForm() {
   const [startTime, setStartTime] = useState("");
   const [endTime, setEndTime] = useState("");
   const [description, setDescription] = useState("");
+  const [latLng, setLatLng] = useState({ lat: "", lng: "" });
 
-  const handleSubmit = e => {
+  const debouncedAddress = useDebounce(address, 500);
+  const debouncedCity = useDebounce(city, 500);
+
+  useEffect(() => {
+    async function fetchLatLng() {
+      if (!debouncedAddress.length) return;
+
+      const response = await getLatLngForAddress(`${debouncedAddress}, ${debouncedCity} IA`);
+      if (!response) return;
+
+      const { lat, lng } = response;
+      setLatLng({ lat, lng });
+    }
+
+    fetchLatLng();
+  }, [debouncedAddress, debouncedCity]);
+
+  const handleSubmit = async e => {
     e.preventDefault();
-    console.log("submitted");
+
+    await addGarageSale({
+      address,
+      city,
+      startTime,
+      endTime,
+      description,
+      ...latLng
+    });
+
+    router.push("/");
   };
 
   return (

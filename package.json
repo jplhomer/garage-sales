@@ -5,9 +5,12 @@
     "now-build": "next build"
   },
   "dependencies": {
+    "dotenv": "^7.0.0",
+    "firebase": "^5.9.3",
     "mapbox-gl": "0.53.1",
     "next": "^8.0.0",
     "react": "^16.7.0",
-    "react-dom": "^16.7.0"
+    "react-dom": "^16.7.0",
+    "unfetch": "^4.1.0"
   }
 }

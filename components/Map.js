@@ -7,8 +7,8 @@ export default function Map({ sales }) {
   let mapContainer = useRef(null);
 
   const DEFAULT_CENTER = {
-    latitude: 41.600446,
-    longitude: -93.853402
+    lat: 41.600446,
+    lng: -93.853402
   };
 
   useEffect(() => {
@@ -16,8 +16,8 @@ export default function Map({ sales }) {
       container: mapContainer.current,
       style: "mapbox://styles/mapbox/streets-v10",
       center: {
-        lat: DEFAULT_CENTER.latitude,
-        lng: DEFAULT_CENTER.longitude
+        lat: DEFAULT_CENTER.lat,
+        lng: DEFAULT_CENTER.lng
       },
       zoom: 12
     });
@@ -64,7 +64,7 @@ function generateSalePoints(sales) {
             type: "Feature",
             geometry: {
               type: "Point",
-              coordinates: [sale.longitude, sale.latitude]
+              coordinates: [sale.lng, sale.lat]
             },
             properties: {
               icon: "circle"
