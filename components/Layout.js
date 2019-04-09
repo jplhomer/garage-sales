@@ -35,6 +35,8 @@ export default function Layout({ children }) {
 
         .wrapper {
           padding: 1rem;
+          max-width: 1000px;
+          margin: 0 auto;
         }
 
         h1,

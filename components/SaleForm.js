@@ -49,36 +49,58 @@ export default function SaleForm() {
 
   return (
     <form onSubmit={handleSubmit}>
-      <div className="field">
-        <label htmlFor="address">Street Address</label>
-        <input type="text" id="address" value={address} onChange={e => setAddress(e.target.value)} />
-      </div>
-      <div className="field">
-        <label htmlFor="city">City</label>
-        <input type="text" id="city" value={city} onChange={e => setCity(e.target.value)} />
-      </div>
-      <div className="field">
-        <label htmlFor="startTime">Start Time</label>
-        <input type="time" id="startTime" value={startTime} onChange={e => setStartTime(e.target.value)} />
-      </div>
-      <div className="field">
-        <label htmlFor="endTime">End Time</label>
-        <input type="time" id="endTime" value={endTime} onChange={e => setEndTime(e.target.value)} />
-      </div>
-      <div className="field">
-        <label htmlFor="description">Description</label>
-        <textarea
-          name="description"
-          id="description"
-          value={description}
-          onChange={e => setDescription(e.target.value)}
-        />
-      </div>
-      <div className="field">
-        <label>Drag the pin to match your location</label>
-        <DynamicEditableLocationMap latLng={latLng} onChangeLocation={setLatLng} />
+      <div className="grid">
+        <div className="main">
+          <div className="field">
+            <label htmlFor="address">Street Address</label>
+            <input type="text" id="address" value={address} onChange={e => setAddress(e.target.value)} />
+          </div>
+          <div className="field">
+            <label htmlFor="city">City</label>
+            <input type="text" id="city" value={city} onChange={e => setCity(e.target.value)} />
+          </div>
+          <div className="field">
+            <label htmlFor="startTime">Start Time</label>
+            <input type="time" id="startTime" value={startTime} onChange={e => setStartTime(e.target.value)} />
+          </div>
+          <div className="field">
+            <label htmlFor="endTime">End Time</label>
+            <input type="time" id="endTime" value={endTime} onChange={e => setEndTime(e.target.value)} />
+          </div>
+          <div className="field">
+            <label htmlFor="description">Description</label>
+            <textarea
+              name="description"
+              id="description"
+              value={description}
+              onChange={e => setDescription(e.target.value)}
+            />
+          </div>
+        </div>
+        <div className="side">
+          <div className="field">
+            <label>Drag the pin to match your location</label>
+            <DynamicEditableLocationMap latLng={latLng} onChangeLocation={setLatLng} />
+          </div>
+        </div>
       </div>
       <Button type="submit">Add Garage Sale</Button>
+      <style jsx>{`
+        @media (min-width: 800px) {
+          .grid {
+            display: flex;
+          }
+
+          .side {
+            width: 40%;
+          }
+
+          .main {
+            flex-grow: 1;
+            padding-right: 1rem;
+          }
+        }
+      `}</style>
     </form>
   );
 }
