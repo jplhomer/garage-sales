@@ -1,6 +1,12 @@
 import { db } from "../src/db";
 
 export async function getGarageSales() {
+  const snapshot = await db.collection("sales").get();
+  return snapshot.docs.map(doc => ({
+    id: doc.id,
+    ...doc.data()
+  }));
+
   return [
     {
       id: 1,

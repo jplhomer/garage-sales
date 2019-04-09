@@ -3,7 +3,7 @@ export default function GarageSale({ sale }) {
     <div className="sale">
       <div className="address">{sale.address}</div>
       <div className="hours">
-        {sale.start} - {sale.end}
+        {sale.startTime} - {sale.endTime}
       </div>
       <style jsx>{`
         .sale {
