@@ -6,3 +6,4 @@ functions
 firebase.json
 firebase-debug.log
 .firebaserc
+now-secrets.json

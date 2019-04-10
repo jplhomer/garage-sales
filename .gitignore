@@ -2,3 +2,4 @@ node_modules
 .next
 .env
 firebase-debug.log
+now-secrets.json

@@ -12,5 +12,8 @@
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
     "unfetch": "^4.1.0"
+  },
+  "devDependencies": {
+    "now-env": "^3.1.0"
   }
 }
