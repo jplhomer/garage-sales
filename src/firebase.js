@@ -1,5 +1,5 @@
 import firebase from "firebase/app";
-import "firebase/firestore";
+import "firebase/functions";
 
 if (!firebase.apps.length) {
   firebase.initializeApp({
@@ -12,4 +12,4 @@ if (!firebase.apps.length) {
   });
 }
 
-export const db = firebase.firestore();
+export const functions = firebase.functions();

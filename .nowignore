@@ -2,3 +2,7 @@ README.md
 .next
 node_modules
 .env
+functions
+firebase.json
+firebase-debug.log
+.firebaserc
