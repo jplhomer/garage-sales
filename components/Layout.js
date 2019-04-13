@@ -1,7 +1,11 @@
 import Header from "./Header";
 import Head from "next/head";
+import { UserContext } from "../src/user-context";
+import { useState } from "react";
 
 export default function Layout({ children }) {
+  const [user, setUser] = useState(false);
+
   return (
     <main>
       <Head>
@@ -10,7 +14,9 @@ export default function Layout({ children }) {
         <title>Waukee Garage Sale Day - April 27, 2019</title>
       </Head>
       <Header />
-      <section>{children}</section>
+      <UserContext.Provider value={{ user, setUser }}>
+        <section>{children}</section>
+      </UserContext.Provider>
       <style jsx global>{`
         :root {
           --color-gray: #555;

@@ -1,6 +1,7 @@
-import { useEffect, useState } from "react";
+import { useEffect, useContext } from "react";
 import { firebase } from "../src/firebase";
 import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
+import { UserContext } from "../src/user-context";
 
 const AUTH_CONFIG = {
   signInSuccessUrl: "<url-to-redirect-to-on-success>",
@@ -13,7 +14,7 @@ const AUTH_CONFIG = {
 };
 
 export default function Login() {
-  const [user, setUser] = useState(false);
+  const { user, setUser } = useContext(UserContext);
 
   useEffect(() => {
     const listener = firebase.auth().onAuthStateChanged(user => {
@@ -23,8 +24,18 @@ export default function Login() {
     return listener;
   }, []);
 
+  function logOut() {
+    firebase.auth().signOut();
+    setUser(false);
+  }
+
   return user ? (
-    <p>Logged in as {user.displayName}</p>
+    <p>
+      Logged in as {user.displayName}.{" "}
+      <a href="#" onClick={logOut}>
+        Log out
+      </a>
+    </p>
   ) : (
     <StyledFirebaseAuth uiConfig={AUTH_CONFIG} firebaseAuth={firebase.auth()} />
   );
