@@ -1,8 +1,9 @@
-import firebase from "firebase/app";
+import { default as _firebase } from "firebase/app";
 import "firebase/functions";
+import "firebase/auth";
 
-if (!firebase.apps.length) {
-  firebase.initializeApp({
+if (!_firebase.apps.length) {
+  _firebase.initializeApp({
     apiKey: "AIzaSyBVWA9Dh7ATwsdTuhYLv30dicNTxDyGE34",
     authDomain: "waukee-garage-sales.firebaseapp.com",
     databaseURL: "https://waukee-garage-sales.firebaseio.com",
@@ -12,4 +13,5 @@ if (!firebase.apps.length) {
   });
 }
 
-export const functions = firebase.functions();
+export const functions = _firebase.functions();
+export const firebase = _firebase;

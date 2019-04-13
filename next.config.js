@@ -5,8 +5,6 @@ if (process.env.NODE_ENV !== "production") {
   require("now-env");
 }
 
-console.log(process.env);
-
 module.exports = {
   target: "serverless",
   env: {
