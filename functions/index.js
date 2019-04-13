@@ -31,7 +31,14 @@ exports.getGarageSales = functions.https.onCall((_data, _context) => {
 });
 
 exports.addGarageSale = functions.https.onCall((data, context) => {
-  console.log(data);
+  if (!context.auth) {
+    throw new functions.https.HttpsError(
+      "failed-precondition",
+      "The function must be called " + "while authenticated."
+    );
+  }
+
+  data.email = context.auth.token.email;
   return db.collection("sales").add(data);
 });
 
