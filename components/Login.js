@@ -31,7 +31,7 @@ export default function Login() {
 
   return user ? (
     <p>
-      Logged in as {user.displayName}.{" "}
+      Logged in as <b>{user.displayName}</b>.{" "}
       <a href="#" onClick={logOut}>
         Log out
       </a>
