@@ -32,6 +32,7 @@ const styles = css`
     text-transform: uppercase;
     text-decoration: none;
     border-radius: 5px;
+    text-shadow: 1px 1px 1px black;
   }
 
   .button:hover,
