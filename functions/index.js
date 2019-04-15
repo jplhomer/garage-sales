@@ -1,10 +1,5 @@
 const functions = require("firebase-functions");
 
-// CORS Express middleware to enable CORS Requests.
-const cors = require("cors")({
-  origin: true
-});
-
 // The Firebase Admin SDK to access the Firebase Realtime Database.
 const admin = require("firebase-admin");
 admin.initializeApp();
@@ -44,6 +39,17 @@ exports.addGarageSale = functions.https.onCall((data, context) => {
 
 function getHtmlDescription(data) {
   return `<b>${data.address}</b><br>
-      Hours: ${data.startTime} - ${data.endTime}<br>
+      Hours: ${normalizeHour(data.startTime)} - ${normalizeHour(data.endTime)}<br>
       <p>${data.description}</p>`;
+}
+
+function normalizeHour(time) {
+  if (!time) return "";
+
+  const [hour, minutes] = time.split(":");
+
+  const amPm = parseInt(hour) + 1 > 12 ? "pm" : "am";
+  const hourText = parseInt(hour) > 12 ? hour % 12 : hour;
+
+  return `${parseInt(hourText)}:${minutes} ${amPm}`;
 }
