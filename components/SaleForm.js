@@ -5,6 +5,7 @@ import { addGarageSale } from "../api/sales";
 import router from "next/router";
 import { getLatLngForAddress } from "../api/geocoder";
 import dynamic from "next/dynamic";
+import TimeInput from "./TimeInput";
 const DynamicEditableLocationMap = dynamic(import("./EditableLocationMap"), { ssr: false });
 
 export default function SaleForm() {
@@ -61,11 +62,11 @@ export default function SaleForm() {
           </div>
           <div className="field">
             <label htmlFor="startTime">Start Time</label>
-            <input type="time" id="startTime" value={startTime} onChange={e => setStartTime(e.target.value)} required />
+            <TimeInput id="startTime" value={startTime} onChange={setStartTime} required />
           </div>
           <div className="field">
             <label htmlFor="endTime">End Time</label>
-            <input type="time" id="endTime" value={endTime} onChange={e => setEndTime(e.target.value)} required />
+            <TimeInput id="endTime" value={endTime} onChange={setEndTime} required />
           </div>
           <div className="field">
             <label htmlFor="description">Description</label>
