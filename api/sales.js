@@ -1,8 +1,14 @@
-import { functions } from "../src/firebase";
+import { functions, db } from "../src/firebase";
 
 export async function getGarageSales() {
-  const { data } = await functions.httpsCallable("getGarageSales")();
-  return data;
+  const snapshot = await db.collection("sales").get();
+
+  return snapshot.docs.map(doc => {
+    return {
+      id: doc.id,
+      ...doc.data()
+    };
+  });
 }
 
 export const addGarageSale = functions.httpsCallable("addGarageSale");
