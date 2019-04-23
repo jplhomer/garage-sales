@@ -1,7 +1,7 @@
 import GarageSale from "./GarageSale";
 import Button from "./Button";
 
-export default function GarageSales({ sales }) {
+export default function GarageSales({ sales, onSaleSelected }) {
   return (
     <section>
       <header>
@@ -9,7 +9,7 @@ export default function GarageSales({ sales }) {
         <Button href="/add">Add Your Sale</Button>
       </header>
       {sales.map(sale => {
-        return <GarageSale key={sale.id} sale={sale} />;
+        return <GarageSale key={sale.id} sale={sale} onClick={onSaleSelected} />;
       })}
       <style jsx>{`
         header {

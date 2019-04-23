@@ -10,10 +10,18 @@ const DynamicMap = dynamic(() => import("../components/Map"), {
 });
 
 export default class Index extends Component {
+  state = {
+    selectedSale: {}
+  };
+
   static async getInitialProps() {
     return {
       sales: await getGarageSales()
     };
+  }
+
+  selectSale(sale) {
+    this.setState({ selectedSale: sale });
   }
 
   render() {
@@ -21,10 +29,18 @@ export default class Index extends Component {
       <Layout>
         <div className="grid">
           <div className="map">
-            <DynamicMap sales={this.props.sales} />
+            <DynamicMap
+              sales={this.props.sales}
+              onSaleSelected={sale => this.selectSale(sale)}
+              selectedSale={this.state.selectedSale}
+            />
           </div>
           <div className="wrapper">
-            <GarageSales sales={this.props.sales} />
+            <GarageSales
+              sales={this.props.sales}
+              onSaleSelected={sale => this.selectSale(sale)}
+              selectedSale={this.state.selectedSale}
+            />
           </div>
         </div>
         <style jsx>{`

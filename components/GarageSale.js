@@ -1,13 +1,18 @@
-export default function GarageSale({ sale }) {
+export default function GarageSale({ sale, onClick }) {
   return (
-    <div className="sale">
+    <div className="sale" onClick={() => onClick(sale)}>
       <div className="address">{sale.address}</div>
       <div className="hours">
         {normalizeHour(sale.startTime)} - {normalizeHour(sale.endTime)}
       </div>
       <style jsx>{`
         .sale {
-          padding: 0.5rem 0;
+          padding: 0.5rem 0 0.5rem 1em;
+          cursor: pointer;
+          margin: 0 -1em;
+        }
+        .sale:hover {
+          background-color: #efefef;
         }
         .hours {
           color: var(--color-gray);

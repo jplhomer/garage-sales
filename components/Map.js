@@ -1,8 +1,9 @@
 import { useEffect, useRef } from "react";
 import mapboxgl, { DEFAULT_CENTER } from "../src/map";
 
-export default function Map({ sales }) {
+export default function MapComponent({ sales, selectedSale }) {
   let mapContainer = useRef(null);
+  let markers = useRef(new Map());
 
   useEffect(() => {
     const map = new mapboxgl.Map({
@@ -14,10 +15,12 @@ export default function Map({ sales }) {
 
     map.on("load", () => {
       sales.forEach(sale => {
-        new mapboxgl.Marker()
+        const marker = new mapboxgl.Marker()
           .setLngLat([sale.lng, sale.lat])
           .addTo(map)
           .setPopup(new mapboxgl.Popup().setHTML(sale.htmlDescription));
+
+        markers.current.set(sale.id, marker);
       });
       map.on("click", "sales", e => console.log(`Clicked on a sale`, e.features));
     });
@@ -26,6 +29,14 @@ export default function Map({ sales }) {
       map.remove();
     };
   }, [sales]);
+
+  useEffect(() => {
+    if (!markers.current.has(selectedSale.id)) return;
+
+    markers.current.get(selectedSale.id).togglePopup();
+
+    return () => {};
+  }, [selectedSale]);
 
   return (
     <div className="map-container">
@@ -41,6 +52,13 @@ export default function Map({ sales }) {
           .map-container {
             height: calc(100vh - 77px);
             width: 100%;
+          }
+        }
+
+        @media (min-width: 900px) {
+          .map,
+          .map-container {
+            height: calc(100vh - 50px);
           }
         }
       `}</style>
